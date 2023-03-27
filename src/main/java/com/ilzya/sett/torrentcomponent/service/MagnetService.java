@@ -80,7 +80,9 @@ public class MagnetService {
                 magnet.setName(Xsoup.compile(StringUtil.replaceVar(val,rule.getName())).evaluate(element).get());
                 magnet.setSize(Xsoup.compile(StringUtil.replaceVar(val,rule.getSize())).evaluate(element).get());
                 magnet.setUpdate(Xsoup.compile(StringUtil.replaceVar(val,rule.getUpdate())).evaluate(element).get());
-                magnet.setDetailUrl(Xsoup.compile(StringUtil.replaceVar(val,rule.getDetailUrl())).evaluate(element).get());
+                if(!rule.getDetailUrl().trim().isEmpty()){
+                    magnet.setDetailUrl(Xsoup.compile(StringUtil.replaceVar(val,rule.getDetailUrl())).evaluate(element).get());
+                }
                 magnets.getMagnet().add(magnet);
                 // 对最后一页可能不足20个做重新赋值
                 tempCount = i + 1;
