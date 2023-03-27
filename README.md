@@ -123,14 +123,14 @@ maven package
 
 你可以加入这个项目一起维护，它不受任何限制！
 
-- 你可以通过 **[PR](https://github.com/lzyAB/link-helper/pulls)** 对项目代码做出贡献
-- 你可以通过 **[ISSUES](https://github.com/lzyAB/link-helper/issues)** 发布你的建议或反馈任何BUG
+- 你可以通过 **[PR](https://github.com/sayokey/sett-torrent-component/pulls)** 对项目代码做出贡献
+- 你可以通过 **[ISSUES](https://github.com/sayokey/sett-torrent-component/issues)** 发布你的建议或反馈任何BUG
 - 你可以点亮一个 **Star** 来支持我们！
-- 你可以在这里畅谈任何你所想说的内容 **[讨论区](https://github.com/lzyAB/link-helper/discussions)**
+- 你可以在这里畅谈任何你所想说的内容 **[讨论区](https://github.com/sayokey/sett-torrent-component/discussions)**
 
 
 ### 提交意见
 
 ---
 
-你可以到 [ISSUES](https://github.com/lzyAB/link-helper/issues) 提交你在使用中遇到的任何问题！
+你可以到 [ISSUES](https://github.com/sayokey/sett-torrent-component/issues) 提交你在使用中遇到的任何问题！

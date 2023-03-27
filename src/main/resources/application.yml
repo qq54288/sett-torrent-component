@@ -1,5 +1,7 @@
 sett:
   torrent:
     rule:
-      path: D:\WorkSpace\JavaProjects\torrent-component\src\main\resources\rule\rule.json
+      path: src/main/resources/rule/config.json
 
+server:
+  port: 8080
