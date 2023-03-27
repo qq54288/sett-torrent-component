@@ -72,6 +72,16 @@ maven package
 | host  | String | 代理主机 |
 | port  | Integer | 端口号 |
 
+### 注入值
+
+在执行搜索或查看详细信息时，会向部分属性注入值。
+
+|  模板  | 说明 |
+|  ----  | ---- |
+| ${keyword}  | 会向`searchUrl`中注入由请求中的keyword参数 |
+| ${nowPage}  | 会向`searchUrl`中注入由请求中的nowPage参数 |
+| ${index}  | 会向`例如搜索结果的数组中动态参数`中注入由请求中的index参数，代表循环中第N个值 |
+| ${detailUrl}  | 会向`detail.url`中注入由请求中的查询请求中的detailUrl参数 |
 
 > 这是一个规则的默认模板
 

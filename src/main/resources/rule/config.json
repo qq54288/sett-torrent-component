@@ -1,0 +1,54 @@
+[
+  {
+    "site": "torrentkitty",
+    "searchUrl": "https://www.torrentkitty.red/search/${keyword}/${nowPage}",
+    "group": "//*[@id=\"archiveResult\"]/tbody",
+    "count" : 20,
+    "groupStart": 2,
+    "page": "//*[@id=\"main\"]/div[2]/div[4]/a[3]/text()",
+    "size" : "//tr[${index}]/td[@class='size']/text()",
+    "name": "//tr[${index}]/td[@class='name']/text()",
+    "update": "//tr[${index}]/td[@class='date']/text()",
+    "magnet": "//tr[${index}]/td[@class='action']/a[2]/@href",
+    "detailUrl": "",
+    "detail": {
+      "enable": false,
+      "url": "",
+      "size" : "",
+      "name": "",
+      "update": "",
+      "magnet": ""
+    },
+    "proxy": {
+      "host": "127.0.0.1",
+      "port": 7890,
+      "enable": true
+    }
+  },
+  {
+    "site": "cilisousuo",
+    "searchUrl": "https://www.cilisousuo.com/search?q=${keyword}",
+    "group": "//html/body/div[2]/ul",
+    "count" : 50,
+    "groupStart": 1,
+    "page": "",
+    "size" : "/li[${index}]/div[2]/text()",
+    "name": "/li[${index}]/div[1]/div[1]/text()",
+    "update": "/html/body/div[2]/div[2]/dl/dd[2]/text()",
+    "magnet": "//*[@id=\"input-magnet\"]/@value",
+    "detailUrl": "/li[${index}]/a/@href",
+    "detail": {
+      "enable": true,
+      "url": "https://www.cilisousuo.com${detailUrl}",
+      "size" : "/html/body/div[2]/div[2]/dl/dd[3]/text()",
+      "name": "/html/body/div[2]/h1/text()",
+      "update": "/html/body/div[2]/div[2]/dl/dd[2]/text()",
+      "magnet": "//*[@id=\"input-magnet\"]/@value"
+    },
+    "proxy": {
+      "host": "127.0.0.1",
+      "port": 7890,
+      "enable": true
+    }
+  }
+]
