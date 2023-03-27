@@ -1,0 +1,5 @@
+sett:
+  torrent:
+    rule:
+      path: D:\WorkSpace\JavaProjects\torrent-component\src\main\resources\rule\rule.json
+
