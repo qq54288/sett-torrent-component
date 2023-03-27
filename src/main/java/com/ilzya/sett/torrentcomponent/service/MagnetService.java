@@ -64,7 +64,13 @@ public class MagnetService {
             if(rule.getPage().trim().isEmpty()){
                 magnets.setPage(1);
             }else{
-                magnets.setPage(Integer.valueOf(Xsoup.compile(rule.getPage()).evaluate(document).get()));
+                String page = Xsoup.compile(rule.getPage()).evaluate(document).get();
+                if(page != null){
+                    magnets.setPage(Integer.valueOf(page));
+                }else{
+                    magnets.setPage(1);
+                }
+
             }
 
             magnets.setMagnet(new ArrayList<Magnet>());
@@ -82,6 +88,10 @@ public class MagnetService {
                 magnet.setUpdate(Xsoup.compile(StringUtil.replaceVar(val,rule.getUpdate())).evaluate(element).get());
                 if(!rule.getDetailUrl().trim().isEmpty()){
                     magnet.setDetailUrl(Xsoup.compile(StringUtil.replaceVar(val,rule.getDetailUrl())).evaluate(element).get());
+                }
+                // 若本次获取的值为空 那就跳出循环
+                if(magnet.getMagnet() == null && magnet.getName() == null && magnet.getName() == null && magnet.getSize() == null){
+                   break;
                 }
                 magnets.getMagnet().add(magnet);
                 // 对最后一页可能不足20个做重新赋值
