@@ -102,6 +102,7 @@ public class MagnetService {
             return magnets;
         } catch (Exception e) {
             // 抛出相关异常
+            e.printStackTrace();
             throw new ServiceException(String.format("服务内部异常:%s",e.getMessage()), -1);
         }
     }
@@ -140,6 +141,7 @@ public class MagnetService {
             return detail;
         } catch (Exception e){
             // 抛出相关异常
+            e.printStackTrace();
             throw new ServiceException(String.format("服务内部异常:%s",e.getMessage()), -1);
         }
     }
