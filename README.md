@@ -1,12 +1,19 @@
 
 <h1 align="center">sett-torrent-component</h1>
-<h4 align="center">从sett插件工具中剥离出来的一个磁力搜索工具，支持自定义规则搜索。</h4>
 
+---
+
+<h4 align="center">基于Xsoup、Jsoup、OKhttp3</h4>
+<h4 align="center">从sett插件工具中剥离出来的一个磁力搜索工具，支持自定义规则搜索。</h4>
+<h4 align="center"> [配置仓库](https://github.com/sayokey/sett-torrent-component-rule) · 其他 </h4>
 
 
 ### 开始使用
 
 ---
+
+> 在这里你可以查看一些现成的规则配置，你也可以上传到该仓库
+> [sett-torrent-component-rule](https://github.com/sayokey/sett-torrent-component-rule)
 
 ```shell
 # 将代码clone到本地
