@@ -34,6 +34,7 @@ maven package
 
 1. 搜索接口：`localhost:port/magnet/search?keyword=关键字&nowPage=1&site=配置文件中的站点`
 2. 详细信息接口：`localhost:port/magnet/detail?detailUrl=详细信息地址&site=配置文件中的站点`
+3. 推送迅雷下载：`localhost:port/thunder/addtask?magnet=磁力链接`
 
 ### 规则
 
