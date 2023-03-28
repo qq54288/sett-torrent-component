@@ -3,6 +3,12 @@ package com.ilzya.sett.torrentcomponent.utils;
 import com.ilzya.sett.torrentcomponent.domain.AjaxResult;
 import com.ilzya.sett.torrentcomponent.enums.ResultEnum;
 
+/**
+ * 结果工具类
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 public class ResultUtil {
 
     /**

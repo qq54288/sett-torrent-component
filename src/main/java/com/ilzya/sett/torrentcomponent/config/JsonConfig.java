@@ -4,6 +4,12 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * json配置
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Component
 public class JsonConfig {
 

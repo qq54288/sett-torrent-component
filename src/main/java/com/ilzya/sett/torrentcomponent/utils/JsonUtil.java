@@ -9,8 +9,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * json工具类
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 public class JsonUtil {
 
+    /**
+     * 将本地文件读取并转为对应的实体类
+     *
+     * @return {@link List}<{@link Rule}>
+     */
     public static List<Rule> readJson(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(JsonConfig.RULE_PATH));

@@ -1,5 +1,11 @@
 package com.ilzya.sett.torrentcomponent.enums;
 
+/**
+ * 结果枚举
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 public enum ResultEnum {
 
     SUCCESS(200,"success"),

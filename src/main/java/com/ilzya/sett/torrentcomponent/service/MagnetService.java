@@ -14,15 +14,27 @@ import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 import us.codecraft.xsoup.Xsoup;
 
-import java.net.Proxy;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.*;
+
+
+/**
+ * 磁链服务
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Service
 public class MagnetService {
 
+    /**
+     * 搜索
+     *
+     * @param keyword 关键字
+     * @param nowPage 现在页面
+     * @param site    网站
+     * @return {@link Magnets}
+     */
     public Magnets search(String keyword, Integer nowPage, String site){
         if(keyword.trim().isEmpty()){
             throw new ServiceException("参数keyword不能为空", -1);
@@ -31,27 +43,20 @@ public class MagnetService {
             throw new ServiceException("参数site不能为空", -1);
         }
         // 读取rule文件
-        List<Rule> rules = JsonUtil.readJson();
-        // 根据site找到对应的rule
-        Rule rule = null;
-        try {
-            rule = rules.stream().filter(r -> r.getSite().equals(site)).findFirst().get();
-        } catch (Exception e){
-            throw new ServiceException(String.format("未找到%s的配置文件",site), -1);
-        }
+        Rule rule = checkRule(site);
         // 创建模板替换值
-        Map<String,String> vals = new HashMap<>();
-        vals.put("keyword",keyword);
-        vals.put("nowPage",String.valueOf(nowPage));
+        Map<String,String> values = new HashMap<>(2);
+        values.put("keyword",keyword);
+        values.put("nowPage",String.valueOf(nowPage));
         // 将值注入到url中
-        String Url = StringUtil.replaceVar(vals,rule.getSearchUrl());
+        String url = StringUtil.replaceVar(values,rule.getSearchUrl());
         try {
             // 获取网页源码
-            String raw = HttpUtil.toGet(Url,
+            String raw = HttpUtil.toGet(url,
                     rule.getProxy()
             );
             if(raw.trim().isEmpty()){
-                throw new ServiceException(String.format("访问%s失败,未获取到网页内容",Url), -1);
+                throw new ServiceException(String.format("访问%s失败,未获取到网页内容",url), -1);
             }
             // 解析网页源码
             Document document = Jsoup.parse(raw);
@@ -73,24 +78,24 @@ public class MagnetService {
 
             }
 
-            magnets.setMagnet(new ArrayList<Magnet>());
+            magnets.setMagnet(new ArrayList<>());
             // 获取element中的元素数量
             Integer count = rule.getCount();
-            Integer tempCount = 0;
+            int tempCount = 0;
             // 遍历获取的元素
             for(int i = 0;i < count;i++){
-                Map<String,String> val = new HashMap<>();
+                Map<String,String> val = new HashMap<>(1);
                 val.put("index",String.valueOf(i + rule.getGroupStart()));
                 Magnet magnet = new Magnet();
-                magnet.setMagnet(Xsoup.compile(StringUtil.replaceVar(val,rule.getMagnet())).evaluate(element).get());
-                magnet.setName(Xsoup.compile(StringUtil.replaceVar(val,rule.getName())).evaluate(element).get());
-                magnet.setSize(Xsoup.compile(StringUtil.replaceVar(val,rule.getSize())).evaluate(element).get());
-                magnet.setUpdate(Xsoup.compile(StringUtil.replaceVar(val,rule.getUpdate())).evaluate(element).get());
+                magnet.setMagnet(Xsoup.compile(Objects.requireNonNull(StringUtil.replaceVar(val, rule.getMagnet()))).evaluate(element).get());
+                magnet.setName(Xsoup.compile(Objects.requireNonNull(StringUtil.replaceVar(val, rule.getName()))).evaluate(element).get());
+                magnet.setSize(Xsoup.compile(Objects.requireNonNull(StringUtil.replaceVar(val, rule.getSize()))).evaluate(element).get());
+                magnet.setUpdate(Xsoup.compile(Objects.requireNonNull(StringUtil.replaceVar(val, rule.getUpdate()))).evaluate(element).get());
                 if(!rule.getDetailUrl().trim().isEmpty()){
-                    magnet.setDetailUrl(Xsoup.compile(StringUtil.replaceVar(val,rule.getDetailUrl())).evaluate(element).get());
+                    magnet.setDetailUrl(Xsoup.compile(Objects.requireNonNull(StringUtil.replaceVar(val, rule.getDetailUrl()))).evaluate(element).get());
                 }
                 // 若本次获取的值为空 那就跳出循环
-                if(magnet.getMagnet() == null && magnet.getName() == null && magnet.getName() == null && magnet.getSize() == null){
+                if(magnet.getMagnet() == null && magnet.getName() == null && magnet.getUpdate() == null && magnet.getSize() == null && magnet.getDetailUrl() == null){
                    break;
                 }
                 magnets.getMagnet().add(magnet);
@@ -107,29 +112,29 @@ public class MagnetService {
         }
     }
 
+
+    /**
+     * 细节
+     *
+     * @param detailUrl 详细网址
+     * @param site      网站
+     * @return {@link Detail}
+     */
     public Detail detail(String detailUrl, String site){
         // 读取rule文件
-        List<Rule> rules = JsonUtil.readJson();
-        // 根据site找到对应的rule
-        Rule rule = null;
-        try {
-            rule = rules.stream().filter(r -> r.getSite().equals(site)).findFirst().get();
-        } catch (Exception e){
-            throw new ServiceException(String.format("未找到%s的配置文件",site), -1);
-        }
+        Rule rule = checkRule(site);
         // 创建模板替换值
-        Map<String,String> vals = new HashMap<>();
-        vals.put("detailUrl",detailUrl);
-        String Url = StringUtil.replaceVar(vals,rule.getDetail().getUrl());
-        System.out.println(Url);
+        Map<String,String> values = new HashMap<>(1);
+        values.put("detailUrl",detailUrl);
+        String url = StringUtil.replaceVar(values,rule.getDetail().getUrl());
         Detail detail = new Detail();
         try {
             // 获取网页源码
-            String raw = HttpUtil.toGet(Url,
+            String raw = HttpUtil.toGet(url,
                     rule.getProxy()
             );
             if(raw.trim().isEmpty()){
-                throw new ServiceException(String.format("访问%s失败,未获取到网页内容",Url), -1);
+                throw new ServiceException(String.format("访问%s失败,未获取到网页内容",url), -1);
             }
             // 解析网页源码
             Document document = Jsoup.parse(raw);
@@ -144,6 +149,19 @@ public class MagnetService {
             e.printStackTrace();
             throw new ServiceException(String.format("服务内部异常:%s",e.getMessage()), -1);
         }
+    }
+
+
+    public Rule checkRule(String site){
+        List<Rule> rules = JsonUtil.readJson();
+        // 根据site找到对应的rule
+        Rule rule = new Rule();
+        try {
+            rule = rules.stream().filter(r -> r.getSite().equals(site)).findFirst().get();
+        } catch (Exception e){
+            throw new ServiceException(String.format("未找到%s的配置文件",site), -1);
+        }
+        return rule;
     }
 
 

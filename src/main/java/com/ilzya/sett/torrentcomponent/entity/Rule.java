@@ -2,6 +2,12 @@ package com.ilzya.sett.torrentcomponent.entity;
 
 import lombok.Data;
 
+/**
+ * 规则
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Data
 public class Rule {
 

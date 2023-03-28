@@ -2,6 +2,12 @@ package com.ilzya.sett.torrentcomponent.domain.model;
 
 import lombok.Data;
 
+/**
+ * 搜索体
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Data
 public class SearchBody {
 

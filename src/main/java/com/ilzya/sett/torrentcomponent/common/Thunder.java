@@ -1,5 +1,11 @@
 package com.ilzya.sett.torrentcomponent.common;
 
+/**
+ * 迅雷
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 public interface Thunder {
 
     /**

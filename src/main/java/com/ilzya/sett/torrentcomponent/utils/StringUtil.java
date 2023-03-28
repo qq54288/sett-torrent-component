@@ -10,6 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * 字符串工具类
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Slf4j
 public class StringUtil {
 

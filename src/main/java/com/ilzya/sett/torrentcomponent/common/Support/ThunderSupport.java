@@ -6,6 +6,12 @@ import com.ilzya.sett.torrentcomponent.utils.StringUtil;
 
 import java.io.IOException;
 
+/**
+ * 迅雷实现
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 public class ThunderSupport implements Thunder {
 
     @Override

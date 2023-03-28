@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * 磁链
+ *
+ * @author sayokey
+ * @date 2023/03/28
+ */
 @Data
 public class Magnets {
 
