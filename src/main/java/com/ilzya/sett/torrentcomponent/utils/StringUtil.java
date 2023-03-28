@@ -5,6 +5,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.text.StringSubstitutor;
 import org.springframework.util.StringUtils;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,6 +16,12 @@ public class StringUtil {
     private static final String prefix = "${";
     private static final String suffix = "}";
 
+    /**
+     * 模板替换
+     * @param vars
+     * @param template
+     * @return
+     */
     public static String replaceVar(Map<String,String> vars, String template){
         if(!StringUtils.hasLength(template)){
             log.info(String.format("调用%s方法失败,模板字符串替换失败,模板字符串不能为空",
@@ -37,4 +44,15 @@ public class StringUtil {
         StringSubstitutor stringSubstitutor = new StringSubstitutor(vars);
         return stringSubstitutor.replace(template);
     }
+
+    /**
+     * base64编码
+     * @param str
+     * @return
+     */
+    public static String encodeBase64(String str) {
+        return Base64.getEncoder().encodeToString(str.getBytes());
+    }
+
+
 }

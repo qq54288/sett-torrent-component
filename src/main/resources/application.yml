@@ -2,6 +2,8 @@ sett:
   torrent:
     rule:
       path: src/main/resources/rule/config.json
+    download:
+      path: src/main/resources/download
 
 server:
   port: 8080
