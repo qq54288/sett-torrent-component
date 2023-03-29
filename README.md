@@ -147,20 +147,31 @@ maven package
 - fastjson
 - okhttp3
 
-### 协助我们
 
----
+开始使用
 
-你可以加入这个项目一起维护，它不受任何限制！
+首先下载源代码或者打包后的jar包。
 
-- 你可以通过 **[PR](https://github.com/sayokey/sett-torrent-component/pulls)** 对项目代码做出贡献
-- 你可以通过 **[ISSUES](https://github.com/sayokey/sett-torrent-component/issues)** 发布你的建议或反馈任何BUG
-- 你可以点亮一个 **Star** 来支持我们！
-- 你可以在这里畅谈任何你所想说的内容 **[讨论区](https://github.com/sayokey/sett-torrent-component/discussions)**
+注意：如果下载的是源码或者jar包需要手动创建json规则文件，并在 application.yml 中修改规则文件路径。默认规则路径是项目根目录/rule/config.json
+
+你可以在此处下载一些可供使用的规则配置：https://github.com/sayokey/sett-torrent-component-rule
 
 
-### 提交意见
+启动项目
+浏览器访问 ip:port/swagger-ui.html 即可打开文档页面
 
----
+工具提供了三个API接口：
 
-你可以到 [ISSUES](https://github.com/sayokey/sett-torrent-component/issues) 提交你在使用中遇到的任何问题！
+搜索接口： ip:port/magnet/search?keyword=关键字&nowPage=1&site=配置文件中的站点
+相信信息接口： ip:port/magnet/detail?detailUrl=详细信息地址&site=配置文件中的站点
+windows中推送迅雷下载接口： ip:port/thunder/addtask?magnet=磁力链接
+
+环境及依赖
+
+Java 8
+SpringBoot 2.5.6
+Xsoup 0.3.6
+okhttp3 3.3.0
+swagger2 2.9.2
+
+下载
