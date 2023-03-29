@@ -16,6 +16,7 @@ public class ThunderSupport implements Thunder {
 
     @Override
     public void addMagnetTask(String magent) {
+        magent = StringUtil.decodeIfEncoded(magent);
         String command = "cmd /c start thunder://"+magent;
         try {
             Runtime.getRuntime().exec(command);

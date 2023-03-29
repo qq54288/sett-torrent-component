@@ -123,6 +123,9 @@ public class MagnetService {
     public Detail detail(String detailUrl, String site){
         // 读取rule文件
         Rule rule = checkRule(site);
+        if(!rule.getDetail().isEnable()){
+            throw new ServiceException("对应站点配置未启用查看详细信息接口", -2);
+        }
         // 创建模板替换值
         Map<String,String> values = new HashMap<>(1);
         values.put("detailUrl",detailUrl);

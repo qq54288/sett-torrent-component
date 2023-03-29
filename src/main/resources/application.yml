@@ -1,7 +1,7 @@
 sett:
   torrent:
     rule:
-      path: src/main/resources/rule/config.json
+      path: ./rule/config.json
     download:
       path: src/main/resources/download
 

@@ -5,6 +5,9 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.text.StringSubstitutor;
 import org.springframework.util.StringUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -60,5 +63,19 @@ public class StringUtil {
         return Base64.getEncoder().encodeToString(str.getBytes());
     }
 
+
+    /**
+     * 如果字符串被编码则解码
+     *
+     * @param str str
+     * @return {@link String}
+     */
+    public static String decodeIfEncoded(String str) {
+        try {
+            return URLDecoder.decode(str, StandardCharsets.UTF_8.toString());
+        } catch (IllegalArgumentException | UnsupportedEncodingException e) {
+            return str;
+        }
+    }
 
 }
