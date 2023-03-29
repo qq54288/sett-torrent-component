@@ -1,11 +1,16 @@
-
+<div align="center" >
+<img src="https://img.gejiba.com/images/00e96b8fafdaa56f3a31a5418c0ff407.png"  />
+</div>
 <h1 align="center">sett-torrent-component</h1>
 
----
 
 <h4 align="center">基于Xsoup、Jsoup、OKhttp3</h4>
 <h4 align="center">从sett插件工具中剥离出来的一个磁力搜索工具，支持自定义规则搜索。</h4>
-<h4 align="center"> [配置仓库](https://github.com/sayokey/sett-torrent-component-rule) · 其他 </h4>
+<div align="center">
+<img src="https://img.shields.io/badge/version-1.0.1-gree">
+<img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/sayokey/sett-torrent-component?include_prereleases">
+</div>
+<h4 align="center"> <a target='_blank' href='https://github.com/sayokey/sett-torrent-component-rule'>规则仓库</a> · 其他 </h4>
 
 
 ### 开始使用
@@ -28,9 +33,16 @@ maven package
 
 - 在这里查阅文档：待编写。
 
+### 演示
+
+![](https://img.gejiba.com/images/4b59ca5857657fe0243494d67b17dac3.png)
+![](https://img.gejiba.com/images/14ad78e5bdbb22c36e12c223cd5b74a0.png)
 ### 接口
 
 ----
+
+> swagger 文档
+> localhost:port/swagger-ui.html
 
 1. 搜索接口：`localhost:port/magnet/search?keyword=关键字&nowPage=1&site=配置文件中的站点`
 2. 详细信息接口：`localhost:port/magnet/detail?detailUrl=详细信息地址&site=配置文件中的站点`

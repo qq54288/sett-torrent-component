@@ -38,7 +38,7 @@ public class MagnetController {
     @ApiOperation(value = "搜索")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", required = true, dataType = "String", defaultValue = "星游记"),
-            @ApiImplicitParam(name = "nowPage", value = "当前页", required = true, dataType = "Integer", defaultValue = "1"),
+            @ApiImplicitParam(name = "nowPage", value = "当前页", required = true, dataType = "int", defaultValue = "1"),
             @ApiImplicitParam(name = "site", value = "站点名称", required = true, dataType = "String", defaultValue = "torrentkitty")
     })
     public AjaxResult search(String keyword,
