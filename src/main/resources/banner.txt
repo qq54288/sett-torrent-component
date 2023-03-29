@@ -6,4 +6,4 @@ ${AnsiColor.BLUE}
 /____  >\___  >__|  |__|
      \/     \/
 
- :: sett-torrent ::     (v1.0.0)
+ :: sett-torrent ::     (v1.0.1)
